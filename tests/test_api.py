@@ -1,4 +1,9 @@
-from controller.predict import predict_obesity # type: ignore
+from controllers.obesity_controller import predict_obesity
+import sys
+import os
+
+# Add the project root directory to sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 def test_prediction():
     """Test d'une prédiction avec des valeurs valides"""
