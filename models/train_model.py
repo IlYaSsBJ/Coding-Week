@@ -101,12 +101,16 @@ print("Model saved successfully!")
 
 # Train SHAP explainer after training your model
 explainer = shap.TreeExplainer(model)
+shap_values = explainer.shap_values(X_test)  # Ensure X_test matches training format
+
 
 # Save SHAP explainer to a file
 with open("shap_explainer.pkl", "wb") as file:
       pickle.dump(explainer, file)
 
 print("SHAP explainer saved successfully as shap_explainer.pkl!")
+
+
 # === Memmory Optimization ===
 def get_memory_usage():
     process = psutil.Process()
