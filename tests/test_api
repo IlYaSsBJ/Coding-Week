@@ -1,4 +1,4 @@
-from controller.predict import predict_obesity
+from controller.predict import predict_obesity # type: ignore
 
 def test_prediction():
     """Test d'une prédiction avec des valeurs valides"""
@@ -11,3 +11,4 @@ def test_prediction():
                      "Surpoids Niveau II", "Obésité Type I", "Obésité Type II", "Obésité Type III"]
     
     assert prediction in valid_classes, f"⚠ Prédiction invalide : {prediction}"
+
