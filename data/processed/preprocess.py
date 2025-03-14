@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Charger les données
-file_path = r"C:\Users\hajar\Downloads\estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition\ObesityDataSet_raw_and_data_sinthetic.csv"
+file_path = os.path.join(CURRENT_DIR, "raw" , "ObesityDataSet.csv")
 df = pd.read_csv(file_path)
 
 # Sélectionner uniquement les colonnes numériques
