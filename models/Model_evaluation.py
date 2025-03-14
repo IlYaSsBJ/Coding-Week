@@ -9,14 +9,6 @@ import gc
 import psutil
 
 
-def get_memory_usage():
-    process = psutil.Process()
-    return process.memory_info().rss / (1024 * 1024)  # Convertir en Mo
-# === memory use before optimisation ===
-memory_before = get_memory_usage()
-print(f"before optimisation: {memory_before:.2f} Mo")
-
-
 # === charging model data ===
 df = load-data()
 MODEL_PATH = "model/obesity_model.pkl"
@@ -47,7 +39,7 @@ plt.show()
 # ==== ROC-AUC Score ====
 y_test_binarized = label_binarize(y_test, classes=[0, 1, 2, 3, 4, 5, 6])
 roc_auc = roc_auc_score(y_test_binarized, model.predict_proba(X_test), multi_class="ovr")
-print(f"🔍 ROC-AUC Score: {roc_auc:.4f}")
+print(f" ROC-AUC Score: {roc_auc:.4f}")
 # === Memmory Optimization ===
 def get_memory_usage():
     process = psutil.Process()
