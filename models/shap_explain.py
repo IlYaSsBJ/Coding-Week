@@ -1,20 +1,14 @@
 import joblib
 import shap
 import matplotlib.pyplot as plt
-from controller.load_data import load_data
+from controllers.load-data import load-data
 from sklearn.model_selection import train_test_split
 import gc
 import psutil
 
-def get_memory_usage():
-    process = psutil.Process()
-    return process.memory_info().rss / (1024 * 1024)  # Convertir en Mo
-# === memory use before optimisation ===
-memory_before = get_memory_usage()
-print(f"before optimisation: {memory_before:.2f} Mo")
 
 # === data loading ===
-df = load_data()
+df = load-data()
 MODEL_PATH = "model/obesity_model.pkl"
 model = joblib.load(MODEL_PATH)
 
