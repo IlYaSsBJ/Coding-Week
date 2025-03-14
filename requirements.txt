@@ -1,0 +1,12 @@
+IPython
+streamlit
+numpy
+pandas
+matplotlib
+seaborn
+shap
+scikit-learn
+imblearn
+joblib
+psutil
+

@@ -8,6 +8,7 @@ import streamlit as st
 import base64
 import os
 
+
 # Get the absolute path of the current script (inside views/)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -24,8 +25,7 @@ FEEDBACK_FILE_PATH = os.path.join(BASE_DIR, "data", "processed" , "doctor_feedba
 ICON_PATH= os.path.join(BASE_DIR, "data", "raw" , "icon.png")
 st.set_page_config(
     page_title="Medical Decision Support",
-    page_icon=ICON_PATH
-)
+    page_icon=ICON_PATH)
 
 
 
@@ -125,7 +125,7 @@ st.markdown("""
         font-weight: bold;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         text-align: left;
-        width: 370px; /* Adjust width */
+        width: 380px; /* Adjust width */
     }
 
     .left-footer a, .right-footer a {
@@ -160,8 +160,9 @@ st.markdown("""
         <b>Ilyas</b> (<a href="mailto:Ilyas.BAJJA@centrale-casablanca.ma">Ilyas.BAJJA@centrale-casablanca.ma</a>)<br>
         <b>Doha</b> (<a href="mailto:Douha.MAJRI@centrale-casablanca.ma">Douha.MAJRI@centrale-casablanca.ma</a>)<br>
         <b>Hajar</b> (<a href="mailto:Hajar.NAJIB@centrale-casablanca.ma">Hajar.NAJIB@centrale-casablanca.ma</a>)<br>
-        <b>Meriem</b> (<a href="mailto:Meriem.LAAROUSSI@centrale-casablanca.ma">Meriem.LAAROUSSI@centrale-casablanca.ma</a>)<br>
         <b>Hiba</b> (<a href="mailto:Hiba.CHUIMI@centrale-casablanca.ma">Hiba.CHUIMI@centrale-casablanca.ma</a>)
+        <b>Meriem</b> (<a href="mailto:Meriem.LAAROUSSI@centrale-casablanca.ma">Meriem.LAAROUSSI@centrale-casablanca.ma</a>)<br>
+        
     </div>
 """, unsafe_allow_html=True)
 
