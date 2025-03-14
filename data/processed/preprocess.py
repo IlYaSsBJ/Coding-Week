@@ -1,9 +1,11 @@
 # missing values :
 
 import pandas as pd
+CURRENT_DIR = os.path.dirname(os.path.abspath(_file_))
+file_path = os.path.join(CURRENT_DIR, "raw" , "ObesityDataSet.csv")
 
 # Charger le dataset
-file_path = r"C:\Users\hajar\Downloads\estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition\ObesityDataSet_raw_and_data_sinthetic.csv"
+
 df = pd.read_csv(file_path)
 
 # Afficher les premières lignes pour vérifier le chargement des données
@@ -70,9 +72,9 @@ df_filtered = df[
 ]
 
 # Save the cleaned dataset in the 'data' folder
-df_filtered.to_csv(r"C:\Users\hajar\Documents\GitHub\Coding-Week\data\age_and_weight_cleaned.csv", index=False)
+df_filtered.to_csv(r"C:\Users\hajar\Documents\GitHub\Coding-Week\data\processed\dataset.csv", index=False)
 
-print("✅ Cleaned data saved in 'data' folder as 'age_and_weight_cleaned.csv'.")
+print("✅ Cleaned data saved in 'data' folder as 'dataset.csv'.")
 
 le = LabelEncoder()
 df["NObeyesdad"] = le.fit_transform(df["NObeyesdad"])  # Encoding obesity levels
