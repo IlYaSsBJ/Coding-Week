@@ -8,8 +8,11 @@ import streamlit as st
 import base64
 import os
 
-# Get the current script's directory (root of the repo)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Get the absolute path of the current script (inside views/)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Move up one level to reach the project root
+BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
 
 # Construct paths relative to the project root
 LOCAL_LOGO_PATH = os.path.join(BASE_DIR, "data","raw" , "image001.png")
