@@ -1,9 +1,11 @@
 # missing values :
 
 import pandas as pd
+CURRENT_DIR = os.path.dirname(os.path.abspath(_file_))
+file_path = os.path.join(CURRENT_DIR, "raw" , "ObesityDataSet.csv")
 
 # Charger le dataset
-file_path = r"C:\Users\hajar\Downloads\estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition\ObesityDataSet_raw_and_data_sinthetic.csv"
+
 df = pd.read_csv(file_path)
 
 # Afficher les premières lignes pour vérifier le chargement des données
