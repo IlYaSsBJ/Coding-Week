@@ -11,7 +11,7 @@ import psutil
 
 
 # === data loading ===
-df = load_data()
+df = load-data()
 # === memory reducing ===
 def optimize_dataframe(df):
     for col in df.select_dtypes(include=['int64']).columns:
