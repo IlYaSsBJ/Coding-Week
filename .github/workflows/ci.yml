@@ -1,4 +1,4 @@
-name: CI/CD Pipeline for Medical Decision Support
+name: CI/CD Pipeline
 
 on:
   push:
@@ -14,33 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Clone Repository
+      - name: 📥 Clone the repository
         uses: actions/checkout@v3
 
-      - name: 📦 Install Python & Dependencies
+      - name: 📦 Set up Python and dependencies
         uses: actions/setup-python@v3
         with:
           python-version: '3.9'
 
-      - name: 📌 Install Dependencies
+      - name: 📌 Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest  
-        
+
       - name: 🧪 Run Unit Tests
-        run: pytest tests/
-
-  build-and-deploy:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Clone Repository
-        uses: actions/checkout@v3
-
-      - name: 🐳 Build Docker Image
-        run: docker build -t medical_decision_support .
-
-      - name: ✅ Verify Docker Image
-        run: docker run --rm medical_decision_support streamlit --version
+        run: PYTHONPATH=. pytest tests/
