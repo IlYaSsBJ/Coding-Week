@@ -8,6 +8,7 @@ import streamlit as st
 import base64
 import os
 
+
 # Get the absolute path of the current script (inside views/)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -24,8 +25,7 @@ FEEDBACK_FILE_PATH = os.path.join(BASE_DIR, "data", "processed" , "doctor_feedba
 ICON_PATH= os.path.join(BASE_DIR, "data", "raw" , "icon.png")
 st.set_page_config(
     page_title="Medical Decision Support",
-    page_icon=ICON_PATH
-)
+    page_icon=ICON_PATH)
 
 
 
