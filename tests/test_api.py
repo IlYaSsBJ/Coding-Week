@@ -1,9 +1,10 @@
-from controllers.obesity_controller import predict_obesity
 import sys
 import os
 
-# Add the project root directory to sys.path
+# Ensure we can import modules from the main project directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from controllers.obesity_controller import predict_obesity  # ✅ Ensure this is correct
 
 def test_prediction():
     """Test d'une prédiction avec des valeurs valides"""
@@ -16,4 +17,3 @@ def test_prediction():
                      "Surpoids Niveau II", "Obésité Type I", "Obésité Type II", "Obésité Type III"]
     
     assert prediction in valid_classes, f"⚠ Prédiction invalide : {prediction}"
-

@@ -1,7 +1,14 @@
 import joblib
 import numpy as np
+import os
 
-MODEL_PATH = "model/obesity_model.pkl"
+# Get the absolute path of the current script (inside views/)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Move up one level to reach the project root
+BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+
+MODEL_PATH = os.path.join(BASE_DIR, "models", "obesity_model.pkl")
 
 def test_model_loading():
     """Test du chargement du modèle"""
