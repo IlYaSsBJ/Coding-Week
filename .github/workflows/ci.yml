@@ -28,4 +28,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🧪 Run Unit Tests
-        run: PYTHONPATH=. pytest tests/
+        run: |
+          export PYTHONPATH=$PWD  # ✅ Ensures Python recognizes project root
+          pytest tests/
