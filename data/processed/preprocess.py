@@ -70,9 +70,9 @@ df_filtered = df[
 ]
 
 # Save the cleaned dataset in the 'data' folder
-df_filtered.to_csv(r"C:\Users\hajar\Documents\GitHub\Coding-Week\data\age_and_weight_cleaned.csv", index=False)
+df_filtered.to_csv(r"C:\Users\hajar\Documents\GitHub\Coding-Week\data\processed\dataset.csv", index=False)
 
-print("✅ Cleaned data saved in 'data' folder as 'age_and_weight_cleaned.csv'.")
+print("✅ Cleaned data saved in 'data' folder as 'dataset.csv'.")
 
 le = LabelEncoder()
 df["NObeyesdad"] = le.fit_transform(df["NObeyesdad"])  # Encoding obesity levels
