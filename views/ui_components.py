@@ -16,7 +16,7 @@ BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
 
 # Construct paths relative to the project root
 LOCAL_LOGO_PATH = os.path.join(BASE_DIR, "data","raw" , "image001.png")
-MODEL_PATH = os.path.join(BASE_DIR, "data", "processed" , "model.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "obesity_model.pkl")
 SHAP_PATH = os.path.join(BASE_DIR, "data", "processed" , "shap_explainer.pkl")
 ENCODER_PATH = os.path.join(BASE_DIR, "data", "processed" , "label_encoder.pkl")
 BACKGROUND_PATH = os.path.join(BASE_DIR, "data", "raw" , "Adobe.png")
