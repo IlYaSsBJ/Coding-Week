@@ -1,27 +1,14 @@
-
-# 📌 Bibliothèques de base
-pandas==1.5.3
+# 📌 Bibliothèques essentielles
+IPython==8.12.0
+streamlit==1.18.1
 numpy==1.24.2
-scikit-learn==1.2.2
-joblib==1.2.0
-
-# 📌 Gestion des déséquilibres de classes
-imbalanced-learn==0.10.1
-
-# 📌 Visualisation et analyse
+pandas==1.5.3
 matplotlib==3.7.1
 seaborn==0.12.2
 shap==0.42.1
-
-# 📌 Interface utilisateur avec Streamlit
-streamlit==1.18.1
-
-# 📌 Déploiement et gestion de l’application
+scikit-learn==1.2.2
+imblearn==0.10.1
+joblib==1.2.0
 psutil==5.9.4
-pathlib==1.0.1
-
-# 📌 Tests unitaires
 pytest==7.2.2
-
-# 📌 Machine Learning avancé
-xgboost==1.7.5
+s
