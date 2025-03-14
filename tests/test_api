@@ -1,4 +1,4 @@
-from controller.predict import predict_obesity
+from controller.predict import predict_obesity # type: ignore
 
 def test_prediction():
     """Test d'une prédiction avec des valeurs valides"""
