@@ -125,7 +125,7 @@ st.markdown("""
         font-weight: bold;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         text-align: left;
-        width: 380px; /* Adjust width */
+        width: 360px; /* Adjust width */
     }
 
     .left-footer a, .right-footer a {
