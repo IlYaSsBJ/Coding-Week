@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent  # Ajuste ici si besoin
 DATASET_PATH = BASE_DIR / "data" / "dataset.csv"
 MODEL_PATH = BASE_DIR / "model" / "obesity_model.pkl"
 
-def load_data():
+def load-data():
     """Charge le dataset et renvoie un DataFrame."""
     if not DATASET_PATH.exists():
         raise FileNotFoundError(f"❌ Erreur : Le dataset '{DATASET_PATH}' est introuvable.")
