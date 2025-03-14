@@ -1,6 +1,13 @@
 import pandas as pd
+import os
 
-DATA_PATH = "data/dataset.csv"
+# Get the absolute path of the current script (inside views/)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Move up one level to reach the project root
+BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+
+DATA_PATH = os.path.join(BASE_DIR, "data", "processed" , "dataset.csv")
 
 def test_dataset_loading():
     """Test du chargement du dataset"""
