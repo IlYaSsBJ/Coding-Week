@@ -1,5 +1,4 @@
 import joblib
-from controllers.load-data import load-data
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, roc_auc_score
 from sklearn.preprocessing import label_binarize
 from sklearn.model_selection import train_test_split
@@ -7,12 +6,23 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import gc
 import psutil
+import os
+import pandas as pd
 
+# === data loading ===
+# Get the absolute path of the current script (inside views/)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# === charging model data ===
-df = load-data()
-MODEL_PATH = "model/obesity_model.pkl"
+# Move up one level to reach the project root
+BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+
+# Construct paths relative to the project root
+DATA_PATH = os.path.join(BASE_DIR, "data","processed" , "dataset.csv")
+df= pd.read_csv(DATA_PATH)
+
+MODEL_PATH = os.path.join(BASE_DIR, "models", "obesity_model.pkl")
 model = joblib.load(MODEL_PATH)
+
 
 X = df.drop("NObeyesdad", axis=1)
 y = df["NObeyesdad"]

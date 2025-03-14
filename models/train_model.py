@@ -1,6 +1,6 @@
 import joblib
 import numpy as np
-from controllers.load-data import load-data
+import pandas as pd
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 from sklearn.model_selection import train_test_split
@@ -8,10 +8,22 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 import gc
 import psutil
+import os
+import pickle
+import shap
 
 
 # === data loading ===
-df = load-data()
+# Get the absolute path of the current script (inside views/)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Move up one level to reach the project root
+BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+
+# Construct paths relative to the project root
+DATA_PATH = os.path.join(BASE_DIR, "data","processed" , "dataset.csv")
+df= pd.read_csv(DATA_PATH)
+
 # === memory reducing ===
 def optimize_dataframe(df):
     for col in df.select_dtypes(include=['int64']).columns:
@@ -79,6 +91,22 @@ model = RandomForestClassifier(n_estimators=100, random_state=42,
 # Train Model
 model.fit(X_train, y_train)
 
+
+# Save the trained model to a file
+with open("obesity_model.pkl", "wb") as file:
+    pickle.dump(model, file)
+
+print("Model saved successfully!")
+
+
+# Train SHAP explainer after training your model
+explainer = shap.TreeExplainer(model)
+
+# Save SHAP explainer to a file
+with open("shap_explainer.pkl", "wb") as file:
+      pickle.dump(explainer, file)
+
+print("SHAP explainer saved successfully as shap_explainer.pkl!")
 # === Memmory Optimization ===
 def get_memory_usage():
     process = psutil.Process()
@@ -86,7 +114,8 @@ def get_memory_usage():
 
 memory_used = get_memory_usage()
 print(f" Memory use after execution : {memory_used:.2f} Mo")
-variables_a_supprimer = [var for var in globals().keys() if var not in ["get_memory_usage", "gc", "psutil", "__name__", "__file__", "__builtins__"]]
+variables_a_supprimer = [var for var in globals().keys() if var not in ["get_memory_usage", "gc", "psutil", "pickle", "shap", "__name__", "__file__", "__builtins__"]]
+
 
 for var in variables_a_supprimer:
     del globals()[var]

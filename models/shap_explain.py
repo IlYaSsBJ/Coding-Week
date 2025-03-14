@@ -1,14 +1,24 @@
 import joblib
 import shap
 import matplotlib.pyplot as plt
-from controllers.load-data import load-data
 from sklearn.model_selection import train_test_split
 import gc
 import psutil
+import pandas as pd
+import os
 
 
 # === data loading ===
-df = load-data()
+# Get the absolute path of the current script (inside views/)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Move up one level to reach the project root
+BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+
+# Construct paths relative to the project root
+DATA_PATH = os.path.join(BASE_DIR, "data","processed" , "dataset.csv")
+df= pd.read_csv(DATA_PATH)
+
 MODEL_PATH = "model/obesity_model.pkl"
 model = joblib.load(MODEL_PATH)
 
