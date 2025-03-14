@@ -6,7 +6,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent  # Ajuste ici si besoin
 
 #  Définir les chemins dynamiquement
-DATASET_PATH = BASE_DIR / "data" / "dataset.csv"
+DATASET_PATH = BASE_DIR / "data" / "processed"/ "dataset.csv"
 MODEL_PATH = BASE_DIR / "model" / "obesity_model.pkl"
 
 def load-data():
