@@ -1,0 +1,24 @@
+name: Deploy App
+
+on: 
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4  
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt  # Ensure you have a 'requirements.txt'
+
+      - name: Run Streamlit App
+        run: streamlit run views/ui_components.py.py --server.headless true

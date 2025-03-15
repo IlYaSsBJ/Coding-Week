@@ -27,7 +27,15 @@ st.set_page_config(
     page_title="Medical Decision Support",
     page_icon=ICON_PATH)
 
-
+# 🔹 Hide the Streamlit Settings button
+st.markdown("""
+    <style>
+    /* Hide the settings button (⚙️) */
+    [data-testid="stToolbar"] {
+        display: none !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Making a transparent header
 st.markdown(
