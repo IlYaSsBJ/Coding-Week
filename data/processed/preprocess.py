@@ -1,8 +1,11 @@
 # missing values :
 
 import pandas as pd
-CURRENT_DIR = os.path.dirname(os.path.abspath(_file_))
-file_path = os.path.join(CURRENT_DIR, "raw" , "ObesityDataSet.csv")
+from sklearn.preprocessing import LabelEncoder
+import os
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(CURRENT_DIR,"raw" , "ObesityDataSet.csv")
 
 # Charger le dataset
 
@@ -28,36 +31,75 @@ print(df.info())
 
 # show outliers : 
 
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.preprocessing import LabelEncoder
+import pickle
 
 # Charger les données
-file_path = os.path.join(CURRENT_DIR, "raw" , "ObesityDataSet.csv")
+file_path = os.path.join(CURRENT_DIR, "ObesityDataSet.csv")
+
+import os
+
+# Get the absolute path of the script's directory
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Move one level up to the root of the project
+PROJECT_DIR = os.path.dirname(CURRENT_DIR)
+
+# Correct file path
+file_path = os.path.join(PROJECT_DIR, "raw", "ObesityDataSet.csv")
+
+# Debugging: Print the path to verify
+print(f"🔍 Chemin utilisé : {file_path}")
+
+# Check if file exists
+if not os.path.exists(file_path):
+    raise FileNotFoundError(f"🚨 Fichier introuvable : {file_path}")
+
+# Charger le dataset
+print(f"🔍 Chemin utilisé : {file_path}")
 df = pd.read_csv(file_path)
 
-# Sélectionner uniquement les colonnes numériques
+# Aperçu des données
+print("📊 Aperçu des données :")
+print(df.head())
+
+# Vérification des valeurs manquantes
+print("\n🔍 Valeurs manquantes par colonne :")
+print(df.isnull().sum())
+
+# Vérifier si certaines valeurs sont codées comme manquantes
+print("\n🔍 Valeurs potentiellement manquantes ('?', 'None', '') :")
+print(df.isin(["?", "None", ""]).sum())
+
+# Résumé des données
+print("\n📈 Résumé des colonnes et valeurs non nulles :")
+df.info()
+
+# 🔹 Affichage des outliers avec un boxplot
 numerical_cols = df.select_dtypes(include=['number']).columns
 df_numerical = df[numerical_cols]
 
-# Créer le boxplot
-plt.figure(figsize=(14, 6))  # Taille du graphe
+plt.figure(figsize=(14, 6))
 sns.boxplot(data=df_numerical)
-
-# Personnalisation du graphe
-plt.title("Boxplots for Numerical Features", fontsize=14)
-plt.xticks(rotation=45)  # Rotation des noms des variables pour une meilleure lisibilité
-plt.grid(axis="y", linestyle="--", alpha=0.7)  # Grille légère sur l'axe Y
-
-# Afficher le graphe
+plt.title("Boxplots des variables numériques", fontsize=14)
+plt.xticks(rotation=45)
+plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.show()
 
-# outliers_removal:
+# 🔹 Suppression des outliers sur l'âge et le poids
+lower_weight, upper_weight = 40, 105
+lower_age, upper_age = 10, 26
 
 import pandas as pd
 
 # Load your dataset
-df = pd.read_csv(r"C:\Users\hajar\Downloads\estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition\ObesityDataSet_raw_and_data_sinthetic.csv")  # Ensure you provide the correct file path
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(CURRENT_DIR,"raw" , "ObesityDataSet.csv")
+df = pd.read_csv(file_path)
 
 # Define outlier removal conditions
 lower_weight = 40  # Minimum valid weight
@@ -66,21 +108,37 @@ lower_age = 10  # Minimum valid age
 upper_age = 26  # Maximum valid age
 
 # Apply both filters (Weight & Age)
+
 df_filtered = df[
     (df["Weight"] >= lower_weight) & (df["Weight"] <= upper_weight) &
     (df["Age"] >= lower_age) & (df["Age"] <= upper_age)
 ]
 
+
 # Save the cleaned dataset in the 'data' folder
-df_filtered.to_csv(r"C:\Users\hajar\Documents\GitHub\Coding-Week\data\processed\dataset.csv", index=False)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+df_filtered.to_csv(CURRENT_DIR,"raw" , "ObesityDataSet.csv", index=False)
 
-print("✅ Cleaned data saved in 'data' folder as 'dataset.csv'.")
+# 🔹 Sauvegarde des données nettoyées
+processed_path = os.path.join(CURRENT_DIR, "data", "processed", "dataset.csv")
 
+
+# Créer le dossier si inexistant
+os.makedirs(os.path.dirname(processed_path), exist_ok=True)
+
+df_filtered.to_csv(processed_path, index=False)
+print(f"✅ Données nettoyées sauvegardées dans : {processed_path}")
+
+# 🔹 Encodage de la colonne cible
 le = LabelEncoder()
-df["NObeyesdad"] = le.fit_transform(df["NObeyesdad"])  # Encoding obesity levels
+df_filtered["NObeyesdad"] = le.fit_transform(df_filtered["NObeyesdad"])
 
-import pickle
+# 🔹 Sauvegarde de l'encodeur
+encoder_path = os.path.join(CURRENT_DIR, "data", "processed", "label_encoder.pkl")
 
-# Save LabelEncoder
-with open("label_encoder.pkl", "wb") as file:
+with open(encoder_path, "wb") as file:
     pickle.dump(le, file)
+
+
+print(f"✅ Label Encoder sauvegardé dans : {encoder_path}")
+

@@ -1,0 +1,37 @@
+# 📌 Ignorer les fichiers Python compilés
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+
+# 📌 Ignorer les fichiers de logs
+logs/
+*.log
+
+# 📌 Ignorer les environnements virtuels
+venv/
+.env
+*.env
+
+# 📌 Ignorer les modèles entraînés
+model/*.pkl
+model/*.joblib
+
+
+# 📌 Ignorer les fichiers Streamlit
+.streamlit/
+
+# 📌 Ignorer les fichiers Docker temporaires
+docker/.dockerignore
+
+# 📌 Ignorer les fichiers des tests et résultats de pytest
+tests/_pycache_/
+tests/*.pytest_cache/
+
+# 📌 Ignorer les fichiers de cache
+*.cache
+*.ipynb_checkpoints
+
+# 📌 Ignorer les fichiers générés automatiquement
+*.swp
+.DS_Store
