@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from controllers.obesity_controller import predict_obesity  # ✅ Ensure this is correct
 
+
 def test_prediction():
     """Test d'une prédiction avec des valeurs valides"""
     features = {
