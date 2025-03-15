@@ -112,6 +112,7 @@ print("SHAP explainer saved successfully as shap_explainer.pkl!")
 
 
 # === Memmory Optimization ===
+
 def get_memory_usage():
     process = psutil.Process()
     return process.memory_info().rss / (1024 * 1024)  # Convertir en Mo
