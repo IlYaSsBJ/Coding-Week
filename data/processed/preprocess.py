@@ -114,7 +114,6 @@ df_filtered = df[
     (df["Age"] >= lower_age) & (df["Age"] <= upper_age)
 ]
 
-
 # Save the cleaned dataset in the 'data' folder
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 df_filtered.to_csv(CURRENT_DIR,"raw" , "ObesityDataSet.csv", index=False)
