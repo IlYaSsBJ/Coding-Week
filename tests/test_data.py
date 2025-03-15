@@ -5,6 +5,7 @@ import os
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
+
 # Move up one level to reach the project root
 BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
 
