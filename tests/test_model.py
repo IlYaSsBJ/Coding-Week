@@ -5,6 +5,7 @@ import joblib
 import os
 
 
+
 # Get the absolute path of the current script (inside views/)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -12,7 +13,6 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
 
 MODEL_PATH = os.path.join(BASE_DIR, "models", "obesity_model.pkl")
-
 
 # Ensure consistent feature selection
 EXPECTED_FEATURES = [
