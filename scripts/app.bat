@@ -2,9 +2,10 @@
 setlocal
 
 cd /d "%~dp0"
-set SCRIPT_PATH=views\ui_components.py
 
-:: Run Streamlit app
-streamlit run %SCRIPT_PATH%
+cd ..
+
+
+streamlit run views\ui_components.py
 
 endlocal
