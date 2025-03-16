@@ -1,3 +1,11 @@
 @echo off
-cd /d "%~dp0views"
-streamlit run ui_components.py
+setlocal
+
+cd /d "%~dp0"
+
+cd ..
+
+
+streamlit run views\ui_components.py
+
+endlocal
